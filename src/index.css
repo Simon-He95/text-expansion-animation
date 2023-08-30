@@ -1,0 +1,40 @@
+
+.text-expansion-animation-wrapper {
+  -webkit-filter: contrast(var(--contrast));
+  -moz-filter: contrast(var(--contrast));
+  -o-filter: contrast(var(--contrast));
+  -ms-filter: contrast(var(--contrast));
+  filter: contrast(var(--contrast));
+  background-color: #fff;
+  --contrast: 30;
+  --letter-spacing: -50px;
+  --delay: 0;
+  --duration: 2s;
+  --font-size: 20px
+}
+
+.text-expansion-animation-word {
+  font-size: var(--font-size);
+  color: #000;
+  animation: showup var(--duration) forwards var(--delay);
+}
+
+@keyframes showup {
+  from {
+    letter-spacing: var(--letter-spacing);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+  }
+
+  to {
+    letter-spacing: 10px;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+  }
+}
