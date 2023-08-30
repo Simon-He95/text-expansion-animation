@@ -1,6 +1,6 @@
 {
   "name": "text-expansion-animation",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "packageManager": "pnpm@7.18.2",
   "description": "text-expansion-animation",
   "author": "Simon He",
