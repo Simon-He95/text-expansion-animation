@@ -1,12 +1,12 @@
 ## text-expansion-animation
 文字交融动画组件
 
-## 安装
+## 🧰 安装
 ```
 npm i text-expansion-animation
 ```
 
-## 使用
+## 👼 使用
 ```js
 import { createApp } from 'vue'
 import { TextExpansionAnimation } from 'text-expansion-animation'
