@@ -25,7 +25,7 @@ app.mount('#app')
   fontSize?: number
   duration?: number
   delay?: number
-  text?: string
+  text?: string 
 }
 ```
 
