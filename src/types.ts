@@ -5,4 +5,5 @@ export interface Props {
   duration?: number
   delay?: number
   text?: string
+  contrast?: number
 }

@@ -28,6 +28,10 @@ export const TextExpansionAnimation = defineComponent({
       type: Number,
       default: 0,
     },
+    contrast: {
+      type: Number,
+      default: 30,
+    },
   },
   setup(props) {
     const textExpansionRef = ref()
@@ -38,7 +42,7 @@ export const TextExpansionAnimation = defineComponent({
       el.style.setProperty('--font-size', `${props.fontSize}px`)
       el.style.setProperty('--delay', `${props.delay / 1000}s`)
       el.style.setProperty('--duration', `${props.duration / 1000}s`)
-      el.style.setProperty('--contrast', String(props.fontSize / 20))
+      el.style.setProperty('--contrast', props.contrast)
       el.style.setProperty('--background-color', props.backgroundColor)
       el.style.setProperty('--color', props.color)
       if (isMounted) {
