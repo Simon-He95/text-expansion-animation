@@ -1,5 +1,5 @@
 import type { DefineComponent } from 'vue'
-import { defineComponent, h, nextTick, onMounted, ref, watch } from 'vue'
+import { defineComponent, h, onMounted, ref, watch } from 'vue'
 import type { Props } from './types'
 export const TextExpansionAnimation = defineComponent({
   name: 'TextExpansionAnimation',
@@ -31,10 +31,9 @@ export const TextExpansionAnimation = defineComponent({
   },
   setup(props) {
     const textExpansionRef = ref()
-    const updateCssProperty = () => {
+    let isMounted = false
+    const updateCssProperty = async () => {
       const el = textExpansionRef.value
-      el.firstChild.removeAttribute('class')
-      void el.firstChild.offsetWidth
       el.style.setProperty('--letter-spacing', `${-props.fontSize / 2}px`)
       el.style.setProperty('--font-size', `${props.fontSize}px`)
       el.style.setProperty('--delay', `${props.delay / 1000}s`)
@@ -42,7 +41,13 @@ export const TextExpansionAnimation = defineComponent({
       el.style.setProperty('--contrast', String(props.fontSize / 20))
       el.style.setProperty('--background-color', props.backgroundColor)
       el.style.setProperty('--color', props.color)
-      el.firstChild.setAttribute('class', 'text-expansion-animation-word')
+      if (isMounted) {
+        el.firstChild.removeAttribute('class')
+        void el.firstChild.offsetWidth
+        el.firstChild.setAttribute('class', 'text-expansion-animation-word')
+      } else {
+        isMounted = true
+      }
     }
     onMounted(updateCssProperty)
     watch(() => props, updateCssProperty, { deep: true })
