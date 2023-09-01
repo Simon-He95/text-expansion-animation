@@ -67,7 +67,7 @@
     "@vitejs/plugin-vue": "^3.1.2",
     "bumpp": "^8.2.1",
     "eslint": "^8.26.0",
-    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-n": "^16.0.0",
     "prettier": "^2.8.1",
     "text-expansion-animation": "workspace:^",
     "tsup": "^6.5.0",
