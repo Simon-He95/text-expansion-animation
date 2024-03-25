@@ -58,7 +58,7 @@
     "release": "bumpp --commit --tag --push && git push origin --tags -f && npm publish"
   },
   "dependencies": {
-    "lazy-js-utils": "^0.0.64",
+    "lazy-js-utils": "^0.0.89",
     "vue": "^3.3.4"
   },
   "devDependencies": {
