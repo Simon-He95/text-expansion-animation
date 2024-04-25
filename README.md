@@ -33,6 +33,8 @@ app.mount('#app')
 }
 ```
 
+## [examples](https://github.com/Simon-He95/text-expansion-animation/blob/main/playground/src/pages/index.vue)
+
 ## License
 
 [MIT](./LICENSE) License © 2022 [Simon He](https://github.com/Simon-He95)
