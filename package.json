@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.2",
-    "@types/node": "^18.19.71",
+    "@types/node": "^22.0.0",
     "@vitejs/plugin-vue": "^3.2.0",
     "bumpp": "^8.2.1",
     "eslint": "^8.57.1",
