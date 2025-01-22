@@ -33,15 +33,15 @@ export const TextExpansionAnimation = defineComponent({
       default: 30,
     },
   },
-  setup(props) {
+  setup(props: Props) {
     const textExpansionRef = ref()
     let isMounted = false
     const updateCssProperty = async () => {
       const el = textExpansionRef.value
-      el.style.setProperty('--letter-spacing', `${-props.fontSize / 2}px`)
+      el.style.setProperty('--letter-spacing', `${-props.fontSize! / 2}px`)
       el.style.setProperty('--font-size', `${props.fontSize}px`)
-      el.style.setProperty('--delay', `${props.delay / 1000}s`)
-      el.style.setProperty('--duration', `${props.duration / 1000}s`)
+      el.style.setProperty('--delay', `${props.delay! / 1000}s`)
+      el.style.setProperty('--duration', `${props.duration! / 1000}s`)
       el.style.setProperty('--contrast', props.contrast)
       el.style.setProperty('--background-color', props.backgroundColor)
       el.style.setProperty('--color', props.color)
@@ -49,7 +49,8 @@ export const TextExpansionAnimation = defineComponent({
         el.firstChild.removeAttribute('class')
         void el.firstChild.offsetWidth
         el.firstChild.setAttribute('class', 'text-expansion-animation-word')
-      } else {
+      }
+      else {
         isMounted = true
       }
     }

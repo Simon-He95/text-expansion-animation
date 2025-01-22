@@ -9,20 +9,25 @@ const show5 = ref(false)
 const stop = useRaf(() => {
   if (!show1.value) {
     return (show1.value = true)
-  } else if (!show2.value) {
+  }
+  else if (!show2.value) {
     return (show2.value = true)
-  } else if (!show3.value) {
+  }
+  else if (!show3.value) {
     return (show3.value = true)
-  } else if (!show4.value) {
+  }
+  else if (!show4.value) {
     return (show4.value = true)
-  } else if (!show5.value) {
+  }
+  else if (!show5.value) {
     show5.value = true
     stop()
   }
 }, 1000)
 const backgroundColor = ref(!isDark.value ? '#fff' : '#000')
 watch(isDark, (v) => {
-  if (!v) backgroundColor.value = '#fff'
+  if (!v)
+    backgroundColor.value = '#fff'
   else backgroundColor.value = '#000'
 })
 </script>
