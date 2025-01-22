@@ -68,6 +68,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-n": "^15.7.0",
     "esno": "^4.8.0",
+    "lazy-js-utils": "^0.1.28",
     "prettier": "^2.8.8",
     "text-expansion-animation": "workspace:^",
     "tsup": "^6.7.0",
