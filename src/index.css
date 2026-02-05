@@ -6,36 +6,100 @@
   filter: contrast(var(--contrast));
   background-color: var(--background-color);
   --contrast: 30;
-  --letter-spacing: -50px;
   --delay: 0;
   --duration: 2s;
+  --easing: cubic-bezier(0.2, 0.9, 0.2, 1);
   --font-size: 20px;
   --color: #000;
   --background-color: #fff;
+  --from-letter-spacing: -50px;
+  --to-letter-spacing: 10px;
+  --from-blur: 10px;
+  --to-blur: 2px;
+  --from-opacity: 1;
+  --to-opacity: 1;
+  --from-y: 0px;
+  --to-y: 0px;
+  --glow-color: currentColor;
+  --glow-to: 0px;
 }
 
-.text-expansion-animation-word {
+.text-expansion-animation-text {
+  display: inline-block;
   font-size: var(--font-size);
   color: var(--color);
-  animation: showup var(--duration) forwards var(--delay);
+  white-space: pre-wrap;
 }
 
-@keyframes showup {
+.text-expansion-animation-word,
+.text-expansion-animation-char {
+  display: inline-block;
+  font-size: var(--font-size);
+  color: var(--color);
+  will-change: filter, letter-spacing, transform, opacity, text-shadow;
+}
+
+.text-expansion-animation-wrapper.text-expansion-animation--run .text-expansion-animation-word {
+  animation:
+    tea-spacing var(--duration) forwards var(--delay) var(--easing),
+    tea-reveal var(--duration) forwards var(--delay) var(--easing);
+}
+
+.text-expansion-animation-wrapper.text-expansion-animation--run .text-expansion-animation-text {
+  animation: tea-spacing var(--duration) forwards var(--delay) var(--easing);
+}
+
+.text-expansion-animation-wrapper.text-expansion-animation--run .text-expansion-animation-char {
+  animation: tea-reveal var(--duration) forwards calc(var(--delay) + var(--char-delay, 0s)) var(--easing);
+}
+
+@keyframes tea-spacing {
   from {
-    letter-spacing: var(--letter-spacing);
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: blur(10px);
+    letter-spacing: var(--from-letter-spacing);
   }
 
   to {
-    letter-spacing: 10px;
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
+    letter-spacing: var(--to-letter-spacing);
+  }
+}
+
+@keyframes tea-reveal {
+  from {
+    opacity: var(--from-opacity);
+    transform: translateY(var(--from-y));
+    -webkit-filter: blur(var(--from-blur));
+    -moz-filter: blur(var(--from-blur));
+    -o-filter: blur(var(--from-blur));
+    -ms-filter: blur(var(--from-blur));
+    filter: blur(var(--from-blur));
+    text-shadow: 0 0 0 var(--glow-color);
+  }
+
+  to {
+    opacity: var(--to-opacity);
+    transform: translateY(var(--to-y));
+    -webkit-filter: blur(var(--to-blur));
+    -moz-filter: blur(var(--to-blur));
+    -o-filter: blur(var(--to-blur));
+    -ms-filter: blur(var(--to-blur));
+    filter: blur(var(--to-blur));
+    text-shadow: 0 0 var(--glow-to) var(--glow-color);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-expansion-animation-word,
+  .text-expansion-animation-text,
+  .text-expansion-animation-char {
+    animation: none;
+    -webkit-filter: none;
+    -moz-filter: none;
+    -o-filter: none;
+    -ms-filter: none;
+    filter: none;
+    text-shadow: none;
+    transform: none;
+    opacity: 1;
+    letter-spacing: normal;
   }
 }

@@ -24,13 +24,44 @@ app.mount('#app')
 
 ```typescript
 {
+  text?: string
   backgroundColor?: string
   color?: string
   fontSize?: number
   duration?: number
   delay?: number
-  text?: string
+  contrast?: number
+
+  split?: 'none' | 'chars' | 'words'
+  trigger?: 'mount' | 'visible' | 'manual'
+  stagger?: number
+  once?: boolean
+  easing?: string
+  effect?: 'blur' | 'glow' | 'pop'
+
+  letterSpacingTo?: number
+  blurFrom?: number
+  blurTo?: number
+  opacityFrom?: number
+  opacityTo?: number
+  yFrom?: number
+  yTo?: number
+  glowTo?: number
+  glowColor?: string
 }
+```
+
+## 示例：逐字 + 视口触发
+
+```vue
+<TextExpansionAnimation
+  text="Scroll-triggered • staggered • pop"
+  split="chars"
+  trigger="visible"
+  effect="pop"
+  :stagger="28"
+  :once="false"
+/>
 ```
 
 ## [examples](https://github.com/Simon-He95/text-expansion-animation/blob/main/playground/src/pages/index.vue)

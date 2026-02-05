@@ -37,6 +37,10 @@ watch(isDark, (v) => {
     :font-size="100"
     :color="backgroundColor === '#000' ? '#fff' : '#000'"
     :background-color="backgroundColor"
+    split="chars"
+    effect="glow"
+    :stagger="18"
+    text="Text Expansion Animation"
   />
   <TextExpansionAnimation
     :color="backgroundColor === '#000' ? '#d0fbe3' : '#00754e'"
@@ -67,5 +71,18 @@ watch(isDark, (v) => {
     :font-size="60"
     :background-color="backgroundColor"
     text="مرحبًا بالعالم"
+  />
+
+  <div style="height: 120vh" />
+  <TextExpansionAnimation
+    :color="backgroundColor === '#000' ? '#ffe8b3' : '#6b4e00'"
+    :font-size="80"
+    :background-color="backgroundColor"
+    trigger="visible"
+    :once="false"
+    split="chars"
+    effect="pop"
+    :stagger="28"
+    text="Scroll-triggered • staggered • pop"
   />
 </template>

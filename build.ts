@@ -1,10 +1,23 @@
 import fsp from 'fs/promises'
-import { jsShell } from 'lazy-js-utils/node'
-; (async () => {
+import { spawn } from 'node:child_process'
+
+function runShell(command: string) {
+  return new Promise<void>((resolve, reject) => {
+    const child = spawn(command, { shell: true, stdio: 'inherit' })
+    child.on('error', reject)
+    child.on('exit', (code) => {
+      if (code === 0)
+        resolve()
+      else
+        reject(new Error(`Command failed (${code ?? 'unknown'}): ${command}`))
+    })
+  })
+}
+void (async () => {
   // build:js
   // eslint-disable-next-line no-console
   console.log('js building...')
-  await jsShell('tsup ./src/index.ts --format cjs,esm --dts --clean')
+  await runShell('tsup ./src/index.ts --format cjs,esm --dts --clean')
   // eslint-disable-next-line no-console
   console.log('js build success')
   // eslint-disable-next-line no-console
