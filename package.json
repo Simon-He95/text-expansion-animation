@@ -75,7 +75,7 @@
     "tsx": "^3.14.0",
     "typescript": "^4.9.5",
     "vite": "^4.5.9",
-    "vitest": "^0.13.1"
+    "vitest": "^0.34.0"
   },
   "eslintConfig": {
     "extends": "@antfu"
